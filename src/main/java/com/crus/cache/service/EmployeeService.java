@@ -4,6 +4,7 @@ import com.crus.cache.exceptions.ResourceNotFoundException;
 import com.crus.cache.model.Employee;
 import com.crus.cache.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -18,8 +19,8 @@ public class EmployeeService {
     EmployeeRepository employeeRepository;
 
     // can be used to inspect the cache during debug
-    // @Autowired
-    // CacheManager cacheManager;
+    //  @Autowired
+    //  CacheManager cacheManager;
 
     @Cacheable(value = "employees", key = "#employeeId", sync = true)
     public Employee getEmployee(Integer employeeId) {
