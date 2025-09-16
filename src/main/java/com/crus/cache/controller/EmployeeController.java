@@ -3,6 +3,7 @@ package com.crus.cache.controller;
 import com.crus.cache.model.Employee;
 import com.crus.cache.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public ResponseEntity<List<Employee>> getAllEmployees() {
-        return ResponseEntity.ok(employeeService.getAllEmployees());
+        return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
     @GetMapping("employees/{employeeId}")
